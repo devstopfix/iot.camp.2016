@@ -30,3 +30,28 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 # MQTT Elixir Client
 
 See usage at:  [hulaaki](https://github.com/suvash/hulaaki)
+
+
+
+# Data format
+
+
+## Sample
+
+The IoT box or sensor will send periodic measurements in JSON format. Each device is identified by it's MAC address. Example:
+
+```json
+{           
+  "MAC48":  "01:23:45:67:89:ab"       
+  "measurements": {       
+    "temperature": [ 21.0 , "C" ],
+    "fan_1_speed": [ 3, "rpm" ],
+    "fan_2_speed": [ 2, "rpm" ],
+    "fan_3_speed": [ 1, "rpm" ],
+    "pressure": [ 1068 ,"mbar" ]
+    },        
+  "recorded_at" 1473764952        
+}           
+```
+NB `recorded_at` is optional
+
