@@ -28,6 +28,8 @@ defmodule IotCamp.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:hulaaki, "~> 0.0.4"},
-     {:poison, "~> 2.0"}]
+     {:poison, "~> 2.0"},
+     {:credo, "~> 0.4", only: [:dev, :test]},
+     {:mix_test_watch, "~> 0.2", only: :dev}]
   end
 end
