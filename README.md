@@ -1,6 +1,11 @@
 # IotCamp
 
-**TODO: Add description**
+# MQTT broker
+
+Start with:
+
+    vagrant up
+
 
 ## Installation
 
@@ -22,3 +27,6 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
+# MQTT Elixir Client
+
+See usage at:  [hulaaki](https://github.com/suvash/hulaaki)
