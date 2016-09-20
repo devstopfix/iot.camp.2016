@@ -30,6 +30,8 @@ defmodule IotCamp.Mixfile do
     [{:hulaaki, "~> 0.0.4"},
      {:poison, "~> 2.0"},
      {:credo, "~> 0.4", only: [:dev, :test]},
-     {:mix_test_watch, "~> 0.2", only: :dev}]
+     {:mix_test_watch, "~> 0.2", only: :dev},
+     {:excheck, "~> 0.5", only: :test},
+     {:triq, github: "triqng/triq", only: :test}]
   end
 end
