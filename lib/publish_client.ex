@@ -6,15 +6,15 @@ defmodule PublishClient do
   @options [client_id: "iot-test", host: "localhost", port: 1883]
 
   def on_connect_ack(options) do
-    IO.inspect options
+    # IO.inspect options
   end
 
   def on_subscribed_publish(options) do
-    IO.inspect options
+    # IO.inspect options
   end
 
   def on_subscribe_ack(options) do
-    IO.inspect options
+    # IO.inspect options
   end
 
   def on_pong(options) do
