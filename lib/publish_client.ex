@@ -5,15 +5,15 @@ defmodule PublishClient do
   @topic "IOT"
   @options [client_id: "iot-test", host: "localhost", port: 1883]
 
-  def on_connect_ack(options) do
+  def on_connect_ack(_options) do
     # IO.inspect options
   end
 
-  def on_subscribed_publish(options) do
+  def on_subscribed_publish(_options) do
     # IO.inspect options
   end
 
-  def on_subscribe_ack(options) do
+  def on_subscribe_ack(_options) do
     # IO.inspect options
   end
 
@@ -36,7 +36,7 @@ defmodule PublishClient do
     msg_json = Poison.encode!(msg_data)
     options = [id: 9_347, 
                topic: @topic, 
-               message: msg_json,
+               message: "{" <> msg_json,
                dup: 0, 
                qos: @qos, 
                retain: 1]
