@@ -10,8 +10,41 @@ defmodule Thng.Server do
   	end
   end
 
+  # Utility
+
+  def lookup(mac) do
+  	case Process.whereis(String.to_atom(mac)) do
+  	  nil -> false
+  	  pid -> {:ok, pid}
+  	end
+  end
+
+  # Callbacks
+
   def init(state) do
   	{:ok, state}
+  end
+
+  def updatedProperty(pid, name, measurement) do
+    GenServer.cast(pid, {:update_property, name, measurement})
+  end
+
+  def getProperty(pid, name) do
+    GenServer.call(pid, {:get_property, name})
+  end
+
+  # Callbacks
+
+  def handle_cast({:update_property, name, measurement}, state) do
+    new_state = Map.put(state, name, measurement)
+    {:noreply, new_state}
+  end
+
+  def handle_call({:get_property, name}, _from, state) do
+    case Map.get(state, name) do
+      nil   -> {:reply, :missing, state}
+      value -> {:reply, {:ok, value}, state}
+    end
   end
 
 end
