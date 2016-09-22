@@ -10,6 +10,17 @@ defmodule Thng.Server do
   	end
   end
 
+  # Utility
+
+  def lookup(mac) do
+  	case Process.whereis(String.to_atom(mac)) do
+  	  nil -> false
+  	  pid -> {:ok, pid}
+  	end
+  end
+
+  # Callbacks
+
   def init(state) do
   	{:ok, state}
   end

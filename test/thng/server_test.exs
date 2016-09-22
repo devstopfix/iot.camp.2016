@@ -12,10 +12,24 @@ defmodule Thng.ServerTest do
   	{:fail, :invalid_mac} = Thng.Server.start_link("OU:CH")
   end
 
-  test "We can name a Thng process with it's MAC address" do
-  	{:ok, pid} = Thng.Server.start_link("00:00:00:00:00:00")
+  test "We can name a Thng and retrive it by it's MAC address" do
+  	mac = "00:00:00:00:00:00"
+  	{:ok, pid} = Thng.Server.start_link(mac)
   	assert Process.alive? pid
-  	assert pid == Process.whereis(String.to_atom("00:00:00:00:00:00"))
+  	assert pid == Process.whereis(String.to_atom(mac))
+  end
+
+  test "Lookup Thng by MAC - does not exist case" do
+  	mac = "99:99:99:99:99:99"
+  	false = Thng.Server.lookup(mac)
+  end
+
+  test "Lookup Thng by MAC - return pid" do
+  	mac = "55:55:55:55:55:55"
+  	{:ok, pid} = Thng.Server.start_link(mac)
+  	{:ok, pid_2} = Thng.Server.lookup(mac)
+  	assert Process.alive? pid
+    assert pid == pid_2
   end
 
   test "Thng can store a pressure" do
