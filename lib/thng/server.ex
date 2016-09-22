@@ -19,6 +19,13 @@ defmodule Thng.Server do
   	end
   end
 
+  def findOrCreate(mac) do
+    case lookup(mac) do
+      {:ok, pid} -> {:ok, pid}
+      false      -> start_link(mac)
+    end
+  end
+
   # Callbacks
 
   def init(state) do
@@ -46,5 +53,7 @@ defmodule Thng.Server do
       value -> {:reply, {:ok, value}, state}
     end
   end
+
+  
 
 end

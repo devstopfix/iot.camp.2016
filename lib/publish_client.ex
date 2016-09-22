@@ -36,7 +36,7 @@ defmodule PublishClient do
     msg_json = Poison.encode!(msg_data)
     options = [id: 9_347, 
                topic: @topic, 
-               message: "{" <> msg_json,
+               message: msg_json,
                dup: 0, 
                qos: @qos, 
                retain: 1]

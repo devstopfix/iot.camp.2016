@@ -23,7 +23,6 @@ defmodule ReceiverTest do
   test "We can retrieve a JSON message from a topic", state do
     id = :rand.uniform(32767)
     Receiver.subscribe(state[:rec], [id: id, topics: ["IOT"], qoses: [1]])
-
     PublishClient.publish_json(state[:pub], %{:hello=>"World"})
     PublishClient.disconnect(state[:pub])
   end
