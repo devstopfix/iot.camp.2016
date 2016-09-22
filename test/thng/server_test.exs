@@ -27,8 +27,9 @@ defmodule Thng.ServerTest do
   test "Lookup Thng by MAC - return pid" do
   	mac = "55:55:55:55:55:55"
   	{:ok, pid} = Thng.Server.start_link(mac)
-  	{:ok, pid} = Thng.Server.lookup(mac)
+  	{:ok, pid_2} = Thng.Server.lookup(mac)
   	assert Process.alive? pid
+    assert pid == pid_2
   end
 
   test "Thng can store a pressure" do
